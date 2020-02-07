@@ -4,9 +4,17 @@
     text-decoration: none;
 }
 
-body {
+html {
     font-size: 10px; /* <= 1rem */
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #7da7d9;
+    height: 100vh;
+
 }
 
 .text-center {
@@ -23,7 +31,6 @@ h2 {
 
 .wrapper {
     max-width: 30rem;
-    margin: 0 auto;
 }
 
 #header {
