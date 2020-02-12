@@ -12,43 +12,36 @@
 
 </head>
 <body>
-        <div class="wrapper">
+        <div class="wrapper" id="quiz">
                 <header id="header">
-                    <h1>Category</h1>
+                    <h1>Category</h1>{{ currentQuestion }} / {{ questions[currentCategory].question.length }}
                     <div id="progress">
-                        <progress id="progressbar" value="50" max="100">  </progress>
-                        <p id="percentage">50%</p>
+                        <progress id="progressbar" :value="(currentQuestion/questions[currentCategory].question.length)*100" max="100">  </progress>
+                        <p id="percentage">{{ (currentQuestion/questions[currentCategory].question.length)*100 }}</p>
                     </div>
                     
                 </header>
                 <main id="main">
-                    <h2 class="text-center">Question What is this?</h2>
+                    <h2 class="text-center">{{ questions[currentCategory].question[currentQuestion].text }}</h2>
                     <div class="options">
-                        <div class="option">
-                            a. a
+                        <div class="option" v-for="(option, index) in questions[currentCategory].question[currentQuestion].options       ">
+                       
+                            {{ questions[currentCategory].question[currentQuestion].options[index].text }}
                         </div>
-                        <div class="option">
-                            b. c
-                        </div>
-                        <div class="option">
-                            c. e
-                        </div>
-                        <div class="option">
-                            d. x
-                        </div>
+
                     </div>
                 </main>
                 <footer id="footerOptions">
                     <nav id="pagination">
-                        <a class="button" href="">Wróć</a>
-                        <a class="button" href="">Dalej</a>
+                        <a class="button" @click="previous()" href="#">Wróć</a>
+                        <a class="button" @click="next()" href="#">Dalej</a>
                     </nav>
                 </footer>
             </div>
         </div>
 
 
-
+    <script src="assets/questions.js"></script>
     <script src="assets/quiz.js"></script>
 </body>
 </html>
